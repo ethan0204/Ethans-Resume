@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(60, 60, 60);
+  color: rgb(216, 216, 216);
+}
+
+main {
+  margin-left: 160px;
+  padding: 20px;
+}
+
+a{color: skyblue;}
+
+a:hover {
+  color: white;
+}
+
+section {
+  padding: 80px 0;
+  border-bottom: 1px solid #ccc;
+  scroll-margin-top: 100px;
+}
+
+/*making a sidebar for my navigation*/
+.sidebar {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #333;
+  padding: 10px;
+  width: 140px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+/*making my links look pretty*/
+.nav-icon {
+  color: skyblue;
+  text-decoration: none;
+  font-weight: bold;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+/* Making the sidebar links glow in a cool way*/
+#collect:target ~ .sidebar #link-collect,
+#paint:target ~ .sidebar #link-paint,
+#army:target ~ .sidebar #link-army,
+#play:target ~ .sidebar #link-play {
+  color: black;
+  opacity: 1;
+}
+/* Making the Back to Top button look nice */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #333;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+  z-index: 1000; 
+}
+
+.back-to-top:hover {
+  background-color: #555;
+}
+/* Making another box in the top right */
+.corner-box {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.7); /* semi-transparent black */
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  z-index: 1000; /* stays above other content */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.bold {
+  font-weight: bold;
+}
+.normal {
+  font-weight: normal;
+}
+
+.image-right {
+  float: right;
+  margin-left: 15px;
+  border-radius: 8px;
+}
+.corners {
+  border-radius: 8px;
+}
