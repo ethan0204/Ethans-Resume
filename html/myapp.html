@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paint Your Army - Adeptus Mechanicus</title>
+  <style>
+    body {
+      background: #121212;
+      color: #f5f5f5;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #ff4136;
+    }
+    select {
+      padding: 10px;
+      font-size: 16px;
+      margin: 20px;
+      background: #1f1f1f;
+      color: #fff;
+      border: 1px solid #888;
+    }
+    .soldier {
+      width: 200px;
+      margin: 20px auto;
+    }
+    .trait-box {
+      margin-top: 20px;
+      max-width: 600px;
+      padding: 10px;
+      border: 1px solid #444;
+      background: #1e1e1e;
+    }
+  </style>
+</head>
+<body>
+    <a href="fromscratch.html" style="
+  display:inline-block;
+  padding:12px 20px;
+  background-color:#8B0000;
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+  transition: background-color 0.3s;">← Back to Hobby Page</a>
+  <h1>How to pick a paint scheme for my favorite army</h1>
+  <p>There are many armies in the game of warhammer, but this one is my favorite!They are called the Adeptus Mechanicus, and here are some of the official paint schemes for the army. Have fun learning and picking!</p>
+  <p>I also attached a short piece of lore for each forge world, just to give an overview of what they are all about, but feel free to do whatever you like with each paint scheme.</p>
+  <p>Select a Forge World to preview your Skitarii colors and traits:</p>
+  <select id="factionSelect" onchange="updateFaction()">
+    <option value="Mars">Mars</option>
+    <option value="Lucius">Lucius</option>
+    <option value="Metalica">Metalica</option>
+    <option value="Ryza">Ryza</option>
+    <option value="Graia">Graia</option>
+    <option value="Stygies">Stygies VIII</option>
+    <option value="Agripinaa">Agripinaa</option>
+  </select>
+
+  <svg class="soldier" viewBox="0 0 100 150">
+    <rect id="helmet" x="40" y="10" width="20" height="15" />
+    <rect id="torso" x="35" y="30" width="30" height="40" />
+    <rect id="leftArm" x="20" y="30" width="15" height="40" />
+    <rect id="rightArm" x="65" y="30" width="15" height="40" />
+    <rect id="leftLeg" x="35" y="75" width="10" height="30" />
+    <rect id="rightLeg" x="55" y="75" width="10" height="30" />
+  </svg>
+
+  <div class="trait-box" id="loreBox">
+    <h2>Mars</h2>
+    <p>Crimson armor and golden trim. Strong synergy with Belisarius Cawl. Buffed Canticles of the Omnissiah.</p>
+  </div>
+
+  <audio id="clickSound" src="https://freesound.org/data/previews/341/341695_6262394-lq.mp3"></audio>
+
+  <script>
+    const factionData = {
+      Mars: {
+        primary: '#8B0000', trim: '#FFD700',
+        lore: 'Crimson armor and golden trim. Strong synergy with Belisarius Cawl. Buffed Canticles of the Omnissiah.'
+      },
+      Lucius: {
+        primary: '#FFFFF0', trim: '#FFD700',
+        lore: 'Ivory and gold. Known for better invulnerable saves and teleportation technology.'
+      },
+      Metalica: {
+        primary: '#FFFFFF', trim: '#C0C0C0',
+        lore: 'White and silver. Advance-and-shoot specialists with relentless assault tactics.'
+      },
+      Ryza: {
+        primary: '#FF8C00', trim: '#FFFFFF',
+        lore: 'Orange and white. Plasma weaponry specialists with damage bonuses.'
+      },
+      Graia: {
+        primary: '#F5F5DC', trim: '#8B0000',
+        lore: 'Bone white with crimson. Stoic defenders. Ignore wounds and never retreat.'
+      },
+      Stygies: {
+        primary: '#000000', trim: '#FF0000',
+        lore: 'Stealthy black and red. Infiltration specialists using hidden deployment.'
+      },
+      Agripinaa: {
+        primary: '#8B0000', trim: '#000000',
+        lore: 'Red and black. Powerful overwatch and resilient infantry formations.'
+      }
+    };
+
+    function updateFaction() {
+      const faction = document.getElementById('factionSelect').value;
+      const { primary, trim, lore } = factionData[faction];
+
+      document.getElementById('helmet').setAttribute('fill', trim);
+      document.getElementById('torso').setAttribute('fill', primary);
+      document.getElementById('leftArm').setAttribute('fill', primary);
+      document.getElementById('rightArm').setAttribute('fill', primary);
+      document.getElementById('leftLeg').setAttribute('fill', trim);
+      document.getElementById('rightLeg').setAttribute('fill', trim);
+
+      document.getElementById('loreBox').innerHTML = `<h2>${faction}</h2><p>${lore}</p>`;
+
+      const sound = document.getElementById('clickSound');
+      sound.currentTime = 0;
+      sound.play();
+    }
+
+    // Initialize default
+    updateFaction();
+  </script>
+</body>
+</html>
